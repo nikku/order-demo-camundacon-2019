@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1vagtid" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1vagtid" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.4">
   <bpmn:process id="Process_1owm47t" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Order Arrived">
       <bpmn:outgoing>SequenceFlow_13kdcdc</bpmn:outgoing>
@@ -23,10 +23,6 @@
       <bpmn:outgoing>SequenceFlow_0px3rw6</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0peno4v</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:task id="Task_0h9hdoi" name="Process Payment">
-      <bpmn:incoming>SequenceFlow_0px3rw6</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1nks722</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:task id="Task_14f9x9t" name="Provision Order">
       <bpmn:incoming>SequenceFlow_13kdcdc</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0lv5uzr</bpmn:outgoing>
@@ -36,6 +32,10 @@
       <bpmn:incoming>SequenceFlow_1o9lltq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1lc2dck</bpmn:outgoing>
     </bpmn:parallelGateway>
+    <bpmn:serviceTask id="Task_0h9hdoi" name="Process Payment" camunda:type="external" camunda:topic="process-payment">
+      <bpmn:incoming>SequenceFlow_0px3rw6</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1nks722</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1owm47t">
@@ -50,14 +50,14 @@
         <di:waypoint x="270" y="197" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Task_1nnult2_di" bpmnElement="Task_1nnult2">
-        <dc:Bounds x="530" y="270" width="100" height="80" />
+        <dc:Bounds x="530" y="220" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_0zxueid_di" bpmnElement="EndEvent_0zxueid">
         <dc:Bounds x="832" y="179" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1o9lltq_di" bpmnElement="SequenceFlow_1o9lltq">
-        <di:waypoint x="630" y="310" />
-        <di:waypoint x="720" y="310" />
+        <di:waypoint x="630" y="260" />
+        <di:waypoint x="720" y="260" />
         <di:waypoint x="720" y="222" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1lc2dck_di" bpmnElement="SequenceFlow_1lc2dck">
@@ -80,20 +80,20 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0peno4v_di" bpmnElement="SequenceFlow_0peno4v">
         <di:waypoint x="450" y="222" />
-        <di:waypoint x="450" y="310" />
-        <di:waypoint x="530" y="310" />
+        <di:waypoint x="450" y="260" />
+        <di:waypoint x="530" y="260" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ParallelGateway_0oidfhs_di" bpmnElement="ExclusiveGateway_0dcgn7f">
         <dc:Bounds x="425" y="172" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_0h9hdoi_di" bpmnElement="Task_0h9hdoi">
-        <dc:Bounds x="530" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_14f9x9t_di" bpmnElement="Task_14f9x9t">
         <dc:Bounds x="270" y="157" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ParallelGateway_0liwyox_di" bpmnElement="ExclusiveGateway_0wljua0">
         <dc:Bounds x="695" y="172" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1yikt6o_di" bpmnElement="Task_0h9hdoi">
+        <dc:Bounds x="530" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

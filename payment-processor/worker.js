@@ -11,14 +11,26 @@ const worker = new Worker(engineEndpoint, {
 
 
 worker.subscribe(workerTopic, async function(context) {
+  console.log(context)
 
-  console.log('Completing work on topic %s', workerTopic);
+  const {
+    activityId,
+    id
+  } = context;
 
-  return {
-    variables: {
-      paymentNumber: 42
-    }
-  };
+  console.log('Completing work %s on topic %s for activity %s', id, workerTopic, activityId);
+
+  return new Promise((resolve) => {
+    setTimeout(function() {
+      console.log('Work completed on topic %s', workerTopic);
+
+      resolve({
+        variables: {
+          paymentNumber: 42
+        }
+      });
+    }, 5000);
+  })
 });
 
 console.log('Registered external task worker %s for topic %s', workerId, workerTopic);
