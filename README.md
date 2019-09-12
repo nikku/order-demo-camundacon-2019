@@ -1,6 +1,7 @@
 # order-demo
 
 * Show `order-processing.bpmn`
+* Spawn in [camunda-playground](https://github.com/nikku/camunda-playground)
 * Make _Process Payment_ a service task
 * Make service task an external task worker
 * Spawn node worker: `cd payment-processor && node worker.js`
