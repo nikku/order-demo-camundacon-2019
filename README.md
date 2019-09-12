@@ -1,5 +1,11 @@
 # order-demo
 
+Showcasing the [camunda-playground](https://github.com/nikku/camunda-playground) in action.
+
+![Demo in Action](./docs/screenshot.png)
+
+## Steps
+
 * Show `order-processing.bpmn`
 * Spawn in [camunda-playground](https://github.com/nikku/camunda-playground)
 * Make _Process Payment_ a service task
