@@ -1,0 +1,14 @@
+{
+  "name": "payment-processor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "camunda-worker-node": "^7.1.0"
+  }
+}
